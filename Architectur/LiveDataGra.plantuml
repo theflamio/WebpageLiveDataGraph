@@ -1,0 +1,15 @@
+@startuml HelloWorld
+
+LiveDataGraph --> LiveDataFetcher : page is active
+activate LiveDataGraph 
+activate LiveDataFetcher
+LiveDataFetcher --> LiveDataFetcher: async fecthDataFromURL()
+    loop until page is deactivate
+    activate LiveDataFetcher
+    LiveDataFetcher --> URL : Scrape data
+    activate URL
+    LiveDataFetcher <-- URL : Return data
+    LiveDataFetcher -> LiveDataFetcher: UpdateGraphVeiw()
+    end
+LiveDataGraph <-- LiveDataFetcher : page is deactivated
+@endumlP
