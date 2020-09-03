@@ -1,0 +1,7 @@
+@startuml HelloWorld
+User --> View : Action
+View -> Controller : User Action
+Controller -> Model : Request/Update
+Controller <- Model : Supply
+View <- Controller : Update
+@enduml
