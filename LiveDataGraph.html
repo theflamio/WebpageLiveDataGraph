@@ -1,20 +1,51 @@
 <!DOCTYPE html>
  <!-- The HTML document itself begins with <html> and ends with </html> -->
+ <!-- http://smoothiecharts.org/tutorial.html -->
+
 <html>
 <head>
     <title>HTML turtorial</title>
-    <link rel="stylesheet" type="text/css" href="Navbarstyles.css">
+    <link rel="stylesheet" type="text/css" href="Navbarstyles.css"> 
+    <link rel="stylesheet" type="text/css" href="GridStyle.css"> 
+    <script type="text/javascript" src="node_modules/smoothie/smoothie.js"></script>
 </head>
-     <!-- The visible part of the HTML document is between <body> and </body> -->
-     <body>
-        <!-- Navigationbar sidenav -->
-        <div class="sidenav">
-            <a href="Index.html">Home</a>
-            <a href="LiveDataGraph.html">Live Data Graph</a>    
-        </div>
-    </body>
-
+      <!-- The visible part of the HTML document is between <body> and </body> -->
     <body>
+      <!-- Navigationbar sidenav -->
+      <div class="row">
+        <div class="column">
+        <nav>
+          <div class="sidenav">
+            <a href="Index.html">Home</a>
+            <a href="LiveDataGraph.html">Live Data Graph</a>       
+          </div>
+        </nav>      
+        </div>  
         
+        <div class="column">
+          <canvas id="mycanvas" width="1200" height="300"></canvas>
+          <script type="text/javascript">
+
+            var smoothie = new SmoothieChart();
+            smoothie.streamTo(document.getElementById("mycanvas"));
+                    
+                    // Data
+            var line1 = new TimeSeries();
+
+            // Add a random value to each line every second
+            setInterval(function() {
+              line1.append(new Date().getTime(), Math.random());
+            }, 1000);
+
+            // Add to SmoothieChart
+            smoothie.addTimeSeries(line1,
+            { strokeStyle:'rgb(0, 255, 0)', fillStyle:'rgba(0, 255, 0, 0.4)', lineWidth:3 });
+
+            smoothie.streamTo(document.getElementById("mycanvas"), 1000 /*delay*/); 
+          
+          </script>
+        </div>
+        
+      </div>
     </body>
 </html>

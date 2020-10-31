@@ -7,5 +7,5 @@ async function fecthDataFromURL() {
 }
 
 function UpdateGraphVeiw() {
-
+    return Math.random();
 }
