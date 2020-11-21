@@ -6,9 +6,9 @@ activate LiveDataFetcher
 LiveDataFetcher --> LiveDataFetcher: async fecthDataFromURL()
     loop until page is deactivate
     activate LiveDataFetcher
-    LiveDataFetcher --> URL : Scrape data
-    activate URL
-    LiveDataFetcher <-- URL : Return data
+    LiveDataFetcher --> Database : Scrape data
+    activate Database
+    LiveDataFetcher <-- Database : Return data
     LiveDataFetcher -> LiveDataFetcher: UpdateGraphVeiw()
     end
 LiveDataGraph <-- LiveDataFetcher : page is deactivated
